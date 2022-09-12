@@ -1,14 +1,7 @@
 #! /bin/bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
-
-if [ -z "$LFS" ]
-  then echo "LFS variable is blank"
-  exit
-fi
+root_guard
+lfs_var_guard
 
 rm -vrf $LFS/*
 

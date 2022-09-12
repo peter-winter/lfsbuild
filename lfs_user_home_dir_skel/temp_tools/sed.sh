@@ -6,15 +6,16 @@ source $SCRIPT_DIR/../functions.sh
 lfs_user_guard
 lfs_var_guard
 
-echo "TEMPORARY TOOLS --- Building m4"
+echo "TEMPORARY TOOLS --- Building sed"
 
-build_m4()
+
+build_sed()
 {
     ./configure --prefix=/usr   \
-            --host=$LFS_TGT \
-            --build=$(build-aux/config.guess)
+            --host=$LFS_TGT
     make
     make DESTDIR=$LFS install
 }
 
-build_package m4 build_m4 skip_dedicated_build_dir
+
+build_package "^sed" build_sed skip_dedicated_build_dir

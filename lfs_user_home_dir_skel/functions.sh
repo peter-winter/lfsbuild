@@ -1,5 +1,13 @@
 #! /bin/bash
 
+root_guard()
+{
+    if [ "$EUID" -ne 0 ]
+      then echo "Please run as root"
+      exit
+    fi
+}
+
 lfs_user_guard()
 {
     if [ $(whoami) != "lfs" ]

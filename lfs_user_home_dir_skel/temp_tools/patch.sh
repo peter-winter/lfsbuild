@@ -6,9 +6,10 @@ source $SCRIPT_DIR/../functions.sh
 lfs_user_guard
 lfs_var_guard
 
-echo "TEMPORARY TOOLS --- Building m4"
+echo "TEMPORARY TOOLS --- Building patch"
 
-build_m4()
+
+build_patch()
 {
     ./configure --prefix=/usr   \
             --host=$LFS_TGT \
@@ -17,4 +18,5 @@ build_m4()
     make DESTDIR=$LFS install
 }
 
-build_package m4 build_m4 skip_dedicated_build_dir
+
+build_package "^patch" build_patch skip_dedicated_build_dir
